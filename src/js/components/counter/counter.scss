@@ -1,0 +1,9 @@
+.counter {
+  border-bottom: var(--color-light-gray) solid 2px;
+  padding-bottom: var(--space-extra-small);
+
+  &__number {
+    font-size: 22px;
+    font-weight: bold;
+  }
+}

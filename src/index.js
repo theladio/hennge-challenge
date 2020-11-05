@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Counter from './js/components/counter';
 import DatePicker from './js/components/date-picker';
 
 import './css/all.scss';
 
 const Index = () => (
-  <form>
-    <DatePicker />
-  </form>
+  <>
+    <form>
+      <DatePicker />
+    </form>
+    <Counter />
+  </>
 );
 
 export default Index;
