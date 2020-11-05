@@ -1,0 +1,46 @@
+.date-picker {
+  align-items: center;
+  border: var(--color-light-gray) solid 2px;
+  border-radius: var(--space-small);
+  cursor: pointer;
+  display: flex;
+  height: 52px;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-left: var(--space-small);
+
+  &__group {
+    align-items: center;
+    display: flex;
+    height: 100%;
+
+    &::before {
+      background: url('../../../assets/icons/calendar.svg') center no-repeat;
+      content: '';
+      display: block;
+      height: 100%;
+      margin-right: var(--space-extra-small);
+      width: var(--icon-small);
+    }
+  }
+
+  &__input,
+  &__submit {
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    text-align: center;
+  }
+
+  &__input::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  &__submit {
+    background: var(--color-light-gray-variant) url('../../../assets/icons/search.svg') center no-repeat;
+    background-size: 24px;
+    border-left: var(--color-light-gray) solid 2px;
+    height: 100%;
+    width: 52px;
+  }
+}
