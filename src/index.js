@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import DatePicker from './js/components/date-picker';
 
+import './css/all.scss';
+
 const Index = () => (
   <form>
     <DatePicker />
