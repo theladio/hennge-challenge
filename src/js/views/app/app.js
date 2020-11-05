@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Counter from '../../components/counter';
 import DatePicker from '../../components/date-picker';
+import MailList from '../../components/mail-list';
 
 import '../../../css/all.scss';
 import './app.scss';
@@ -13,6 +14,7 @@ const App = () => (
       <DatePicker />
     </form>
     <Counter />
+    <MailList />
   </div>
 );
 
