@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: var(--space-large);
+
+  &__form {
+    margin-bottom: var(--space-medium);
+  }
+}
