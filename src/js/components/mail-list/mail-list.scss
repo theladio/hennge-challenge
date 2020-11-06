@@ -1,7 +1,10 @@
 .mail-list {
-  align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: center;
+
+  &--false {
+    align-items: center;
+    justify-content: center;
+  }
 }
