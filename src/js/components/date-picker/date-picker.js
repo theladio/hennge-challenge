@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 
 import './date-picker.scss';
 
-const DatePicker = () => {
+const DatePicker = ({ onChange }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  const setDate = (set) => (event) => set(event.target.value);
+  const setDate = (set) => (event) => {
+    set(event.target.value);
+    onChange();
+  }
   const searchSubmit = (e) => {
     e.preventDefault();
   }
