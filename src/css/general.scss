@@ -1,4 +1,5 @@
 body,
-input {
-  font: 16px Arial, sans-serif;
+input,
+button {
+  font: var(--font-default-size) var(--font-default);
 }
