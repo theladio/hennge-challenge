@@ -32,6 +32,10 @@
     text-align: center;
   }
 
+  &__input {
+    position: relative;
+  }
+
   &__input::-webkit-calendar-picker-indicator {
     display: none;
   }
