@@ -19,7 +19,7 @@ const App = () => {
         <DatePicker onChange={() => setShowMails(true)} />
       </form>
       <Counter />
-      <MailList mails={showMails && mailData} />
+      <MailList mails={!showMails && mailData} />
     </div>
   );
 };
