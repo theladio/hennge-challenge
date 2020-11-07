@@ -1,0 +1,16 @@
+.mail-row {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 20% 25% 45% 10%;
+  height: 52px;
+  line-height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+
+  &__data {
+    margin: var(--space-small);
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
