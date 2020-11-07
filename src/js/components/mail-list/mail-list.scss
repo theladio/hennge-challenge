@@ -11,21 +11,45 @@
   &__sort {
     background: var(--color-light-gray-variant);
     border-bottom: var(--color-light-gray) solid 2px;
-    display: grid;
     font-weight: bold;
-    gap: 0;
-    grid-template-columns: 20% 25% 45% 10%;
-    height: 52px;
+    padding: 0 0 0 var(--space-small);
     width: 100%;
+
+    @media (min-width: 768px) {
+      display: grid;
+      gap: 0;
+      grid-template-columns: 20% 25% 45% 10%;
+      height: 52px;
+      padding: 0;
+    }
 
     &-option {
       background: none;
       border: none;
-      font-size: 15px;
       font-weight: bold;
-      padding: var(--space-small);
+      height: 100%;
+      margin: var(--space-small);
+      padding: 0 var(--space-small) 0 0;
       text-align: left;
       text-transform: capitalize;
+
+      @media (max-width: 767px) {
+        align-items: center;
+
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+
+        &:not(:last-child) {
+          border: var(--color-light-gray) solid;
+          border-width: 0 2px 0 0;
+        }
+      }
+
+      @media (min-width: 768px) {
+        margin: 0;
+        padding: var(--space-small);
+      }
 
       &-selected {
         font-size: 12px;
