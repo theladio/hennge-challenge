@@ -4,7 +4,18 @@ import './mail-row.scss';
 
 const MailRow = ({ mail = {} }) => (
   <div className="mail-row">
-    {console.log(mail)}
+    <div className="mail-row__data">
+      {mail.from}
+    </div>
+    <div className="mail-row__data">
+      {mail.to}
+    </div>
+    <div className="mail-row__data">
+      {mail.subject}
+    </div>
+    <div className="mail-row__data">
+      {mail.date}
+    </div>
   </div>
 );
 
