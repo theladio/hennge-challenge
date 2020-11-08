@@ -1,0 +1,36 @@
+.mail-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &--false {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__sort {
+    background: var(--color-light-gray-variant);
+    border-bottom: var(--color-light-gray) solid 2px;
+    display: grid;
+    font-weight: bold;
+    gap: 0;
+    grid-template-columns: 20% 25% 45% 10%;
+    height: 52px;
+    width: 100%;
+
+    &-option {
+      background: none;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      padding: var(--space-small);
+      text-align: left;
+      text-transform: capitalize;
+
+      &-selected {
+        font-size: 12px;
+        margin-left: var(--space-extra-small);
+      }
+    }
+  }
+}
