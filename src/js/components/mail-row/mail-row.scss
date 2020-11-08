@@ -1,16 +1,65 @@
 .mail-row {
   display: grid;
   gap: 0;
-  grid-template-columns: 20% 25% 45% 10%;
-  height: 52px;
-  line-height: 26px;
+  grid-template-columns: 75% 25%;
+  grid-template-areas:
+    "from date"
+    "to to"
+    "subject subject";
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
 
+  @media (max-width: 767px) {
+    background: url('../../../assets/icons/mail-from-to.svg')
+      var(--space-medium)
+      16px
+      no-repeat;
+    background-size: 13px;
+  }
+
+  @media (min-width: 768px) {
+    background: none;
+    grid-template-columns: 20% 25% 45% 10%;
+    grid-template-areas: unset;
+    height: 52px;
+    line-height: 26px;
+  }
+
   &__data {
-    margin: var(--space-small);
-    text-overflow: ellipsis;
+    margin: var(--space-small) var(--space-small) var(--space-small) var(--space-medium);
     overflow: hidden;
+    text-overflow: inherit;
+
+    @media (max-width: 767px) {
+      height: 20px;
+
+      &--from {
+        grid-area: from;
+        margin-bottom: 0;
+        padding-left: var(--space-medium);
+      }
+
+      &--to {
+        grid-area: to;
+        margin-top: var(--space-extra-small);
+        padding-left: var(--space-medium);
+      }
+
+      &--subject {
+        grid-area: subject;
+        margin-top: 0;
+      }
+
+      &--date {
+        grid-area: date;
+        margin-bottom: 0;
+        text-align: right;
+      }
+    }
+
+    @media (min-width: 768px) {
+      margin: var(--space-small);
+    }
   }
 }
