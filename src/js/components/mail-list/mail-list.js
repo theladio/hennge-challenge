@@ -13,6 +13,27 @@ const sortList = [
   'date',
 ];
 
+const getDate = (dateArr) => {
+  const len = dateArr.length;
+
+  if (len === 1) {
+    const [hours, minutes] = dateArr[0].split(':');
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    return date.getTime();
+  } else if (len === 3) {
+    const [shortDate] = dateArr;
+    const date = new Date(`${(new Date).getFullYear()} ${shortDate}`);
+    return date.getTime();
+  } else if (len === 4) {
+    const [date] = dateArr;
+    return (new Date(date)).getTime();
+  }
+
+  return 0;
+};
+
 const MailList = ({ mails = [] }) => {
   const [sortBy, setSortBy] = useState('date');
   const [sortOrder, setSortOrder] = useState('asc');
@@ -24,6 +45,31 @@ const MailList = ({ mails = [] }) => {
       setSortBy(type);
     }
   };
+
+  const sortedMails = mails.sort((a, b) => {
+    if (sortBy === 'date') {
+      const dateRegex = /(?:(?:(\w{3})\s(\d*))|(?:(\d{4})\/(\d{1,2})\/(\d{1,2}))|(?:\d{1,2}:\d{1,2}))/;
+      const matchesA = a.date.match(dateRegex).filter(Boolean);
+      const matchesB = b.date.match(dateRegex).filter(Boolean);
+
+      const dateA = getDate(matchesA);
+      const dateB = getDate(matchesB);
+
+      if (sortOrder === 'asc') {
+        return dateA - dateB;
+      }
+
+      return dateB - dateA;
+    }
+
+    if (sortOrder === 'asc') {
+      return - a[sortBy].localeCompare(b[sortBy]);
+    }
+
+    return - b[sortBy].localeCompare(a[sortBy]);
+  });
+
+  console.log('sorted emails', sortedMails);
 
   return (
     <div className={classNames(
@@ -56,7 +102,7 @@ const MailList = ({ mails = [] }) => {
               ))}
             </div>
 
-            {mails.map((item, key) => (
+            {sortedMails.map((item, key) => (
               <MailRow
                 key={`mail-${key}`}
                 sortBy={sortBy}
