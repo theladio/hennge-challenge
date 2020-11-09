@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 
 import MailRow from '../mail-row';
 import Logo from '../../../assets/logo.png';
@@ -25,23 +26,29 @@ const MailList = ({ mails = [] }) => {
   };
 
   return (
-    <div className={
-      `mail-list mail-list--${!!mails.length}`
-    }>
+    <div className={classNames(
+      'mail-list',
+      [`mail-list--${!!mails.length}`],
+    )}>
       {mails.length
         ? (
           <>
             <div className="mail-list__sort">
               {sortList.map((type, key) => (
                 <button
-                  className="mail-list__sort-option"
+                  className={classNames(
+                    'mail-list__sort-option',
+                    {
+                      [`mail-list__sort-option--${sortBy === type}`]: sortBy === type,
+                    },
+                  )}
                   key={`sort-${key}`}
                   type="button"
                   onClick={() => sortMails(type)}
                 >
                   {type}
                   {sortBy === type && (
-                    <span className="mail-list__sort-option-selected">
+                    <span className="mail-list__sort-option-order">
                       {sortOrder === 'asc' ? '▲' : '▼'}
                     </span>
                   )}
@@ -52,6 +59,7 @@ const MailList = ({ mails = [] }) => {
             {mails.map((item, key) => (
               <MailRow
                 key={`mail-${key}`}
+                sortBy={sortBy}
                 mail={item}
               />
             ))}

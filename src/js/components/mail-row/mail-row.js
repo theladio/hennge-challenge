@@ -1,21 +1,39 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './mail-row.scss';
 
-const MailRow = ({ mail = {} }) => (
+const mailRowData = [
+  'from',
+  'to',
+  'subject',
+  'date',
+];
+
+const MailRow = ({ mail = {}, sortBy = 'date' }) => (
   <div className="mail-row">
-    <div className="mail-row__data mail-row__data--from">
-      {mail.from}
-    </div>
-    <div className="mail-row__data mail-row__data--to">
-      {mail.to}
-    </div>
-    <div className="mail-row__data mail-row__data--subject">
-      {mail.subject}
-    </div>
-    <div className="mail-row__data mail-row__data--date">
-      {mail.date}
-    </div>
+    {mailRowData.map((item, key) => {
+      const mailTo = item === 'to' ? mail[item].split(',') : {};
+
+      return (
+        <div
+          className={classNames(
+            'mail-row__data',
+            {
+              [`mail-row__data--${item}`]: item,
+              'mail-row__data--true': sortBy === item,
+              'mail-row__data--multiple-address-true': mailTo && mailTo.length > 1,
+            },
+          )}
+          data-hidden-address={`${mailTo.length > 1 ? `+${mailTo.length - 1}` : ''}`}
+          key={`row-${key}`}
+        >
+          {(item === 'to' && mailTo.length > 1)
+            ? `${mailTo[0]}, ...`
+            : mail[item]}
+        </div>
+      )
+    })}
   </div>
 );
 

@@ -1,6 +1,6 @@
 .date-picker {
   align-items: center;
-  border: var(--color-light-gray) solid 2px;
+  border: var(--color-light-gray) solid 1px;
   border-radius: var(--space-small);
   cursor: pointer;
   display: flex;
@@ -54,7 +54,7 @@
   &__submit {
     background: var(--color-light-gray-variant) url('../../../assets/icons/search.svg') center no-repeat;
     background-size: var(--icon-extra-small);
-    border-left: var(--color-light-gray) solid 2px;
+    border-left: var(--color-light-gray) solid 1px;
     height: 100%;
     width: 52px;
 
