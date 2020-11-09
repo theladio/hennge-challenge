@@ -15,7 +15,7 @@
   @media (max-width: 767px) {
     background: url('../../../assets/icons/mail-from-to.svg')
       var(--space-medium)
-      16px
+      17px
       no-repeat;
     background-size: 13px;
   }
@@ -30,9 +30,13 @@
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background: var(--color-light-gray-variant);
+      background-color: var(--color-light-gray-variant);
       color: var(--color-blue);
       cursor: pointer;
+
+      .mail-row__data--subject-has-attachment::after {
+        background-color: var(--color-light-gray-variant);
+      }
     }
   }
 
@@ -48,7 +52,7 @@
     &--multiple-address-true {
       align-items: center;
       display: flex;
-      justify-content: space-between;
+      position: relative;
 
       &::after {
         align-items: center;
@@ -59,6 +63,29 @@
         display: inline-flex;
         line-height: 1;
         padding: 2px var(--space-extra-small);
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    &--subject-has-attachment {
+      align-items: center;
+      display: flex;
+      padding-right: var(--space-medium);
+      position: relative;
+
+      @media (min-width: 768px) {
+        margin-right: 0;
+      }
+
+      &::after {
+        background: var(--color-white) url('../../../assets/icons/clip.svg') right center no-repeat;
+        content: '';
+        display: block;
+        height: var(--icon-extra-small);
+        position: absolute;
+        right: 0;
+        width: var(--icon-extra-small);
       }
     }
 
