@@ -10,7 +10,7 @@
 
   &__sort {
     background: var(--color-light-gray-variant);
-    border-bottom: var(--color-light-gray) solid 2px;
+    border-bottom: var(--color-light-gray) solid 1px;
     font-weight: bold;
     padding: 0 0 0 var(--space-small);
     width: 100%;
@@ -26,6 +26,8 @@
     &-option {
       background: none;
       border: none;
+      color: var(--color-gray);
+      cursor: pointer;
       font-weight: bold;
       height: 100%;
       margin: var(--space-small);
@@ -51,7 +53,11 @@
         padding: var(--space-small);
       }
 
-      &-selected {
+      &--true {
+        color: var(--color-black);
+      }
+
+      &-order {
         font-size: 12px;
         margin-left: var(--space-extra-small);
       }
