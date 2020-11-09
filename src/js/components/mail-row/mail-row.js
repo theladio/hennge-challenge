@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './mail-row.scss';
 
@@ -16,9 +17,14 @@ const MailRow = ({ mail = {}, sortBy = 'date' }) => (
 
       return (
         <div
-          className={
-            `mail-row__data mail-row__data--${item} mail-row__data--${sortBy === item}${mailTo ? ` mail-row__data--multiple-address-${mailTo.length > 1}` : ''}`
-          }
+          className={classNames(
+            'mail-row__data',
+            {
+              [`mail-row__data--${item}`]: item,
+              'mail-row__data--true': sortBy === item,
+              'mail-row__data--multiple-address-true': mailTo && mailTo.length > 1,
+            },
+          )}
           data-hidden-address={`${mailTo.length > 1 ? `+${mailTo.length - 1}` : ''}`}
           key={`row-${key}`}
         >
