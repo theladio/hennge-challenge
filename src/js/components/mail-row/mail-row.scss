@@ -1,13 +1,15 @@
 .mail-row {
+  border-bottom: var(--color-light-gray) solid 1px;
   display: grid;
   gap: 0;
   grid-template-columns: 75% 25%;
   grid-template-areas:
-    "from date"
-    "to to"
-    "subject subject";
+    'from date'
+    'to to'
+    'subject subject';
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   width: 100%;
 
   @media (max-width: 767px) {
@@ -26,10 +28,39 @@
     line-height: 26px;
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-light-gray-variant);
+      color: var(--color-blue);
+      cursor: pointer;
+    }
+  }
+
   &__data {
     margin: var(--space-small) var(--space-small) var(--space-small) var(--space-medium);
     overflow: hidden;
     text-overflow: inherit;
+
+    &--true {
+      font-weight: bold;
+    }
+
+    &--multiple-address-true {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      &::after {
+        align-items: center;
+        background: var(--color-gray-variant);
+        border-radius: var(--space-extra-small);
+        color: var(--color-white);
+        content: attr(data-hidden-address);
+        display: inline-flex;
+        line-height: 1;
+        padding: 2px var(--space-extra-small);
+      }
+    }
 
     @media (max-width: 767px) {
       height: 20px;

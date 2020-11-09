@@ -34,14 +34,16 @@ const MailList = ({ mails = [] }) => {
             <div className="mail-list__sort">
               {sortList.map((type, key) => (
                 <button
-                  className="mail-list__sort-option"
+                  className={
+                    `mail-list__sort-option mail-list__sort-option--${sortBy === type}`
+                  }
                   key={`sort-${key}`}
                   type="button"
                   onClick={() => sortMails(type)}
                 >
                   {type}
                   {sortBy === type && (
-                    <span className="mail-list__sort-option-selected">
+                    <span className="mail-list__sort-option-order">
                       {sortOrder === 'asc' ? '▲' : '▼'}
                     </span>
                   )}
@@ -52,6 +54,7 @@ const MailList = ({ mails = [] }) => {
             {mails.map((item, key) => (
               <MailRow
                 key={`mail-${key}`}
+                sortBy={sortBy}
                 mail={item}
               />
             ))}

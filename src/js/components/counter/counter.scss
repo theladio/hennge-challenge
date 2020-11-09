@@ -1,5 +1,7 @@
 .counter {
-  border-bottom: var(--color-light-gray) solid 2px;
+  border-bottom: var(--color-light-gray) solid 1px;
+  color: var(--color-gray);
+  font-weight: bold;
   padding: 0 0 var(--space-extra-small) var(--space-medium);
 
   @media (min-width: 768px) {
@@ -7,6 +9,7 @@
   }
 
   &__number {
+    color: var(--color-black);
     font-size: 22px;
     font-weight: bold;
   }
