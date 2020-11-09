@@ -19,10 +19,11 @@ const MailRow = ({ mail = {}, sortBy = 'date' }) => (
         <div
           className={classNames(
             'mail-row__data',
+            [`mail-row__data--${item}`],
             {
-              [`mail-row__data--${item}`]: item,
               'mail-row__data--true': sortBy === item,
               'mail-row__data--multiple-address-true': mailTo && mailTo.length > 1,
+              [`mail-row__data--${item}-has-attachment`]: (['subject', 'date'].includes(item)) && mail['attachment'],
             },
           )}
           data-hidden-address={`${mailTo.length > 1 ? `+${mailTo.length - 1}` : ''}`}
