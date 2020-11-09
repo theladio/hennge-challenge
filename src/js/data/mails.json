@@ -15,7 +15,8 @@
     "from": "ccc@example.com",
     "to": "xxx@example.com, hide@example.com",
     "subject": "Happy New Year! Greetings for the New Year.",
-    "date": "0:00"
+    "date": "0:00",
+    "attachment": true
   },
   {
     "from": "ddd.dddd@example.com",
@@ -45,13 +46,15 @@
     "from": "hhh.hhh@example.com",
     "to": "ooo.ooo@example.com",
     "subject": "Workplace Summary for sample, Inc.: Jun 2-Jun 9",
-    "date": "Jan 01"
+    "date": "Jan 01",
+    "attachment": true
   },
   {
     "from": "iii@example.com",
     "to": "nnn@example.com",
     "subject": "I love you",
-    "date": "2019/12/31"
+    "date": "2019/12/31",
+    "attachment": true
   },
   {
     "from": "Pablo-Diego-José-Francisco <pablo@example.com>",
