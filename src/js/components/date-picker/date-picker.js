@@ -8,11 +8,17 @@ const DatePicker = ({ onChange }) => {
 
   const setDate = (set) => (event) => {
     set(event.target.value);
-    onChange();
   }
   const searchSubmit = (e) => {
     e.preventDefault();
+    onChange({ startDate, endDate });
   }
+  const inputProps = {
+    className: 'date-picker__input',
+    type: 'date',
+    min: '1900-01-01',
+    max: '2999-12-31',
+  };
 
   return (
     <label
@@ -21,18 +27,16 @@ const DatePicker = ({ onChange }) => {
     >
       <div className="date-picker__group">
         <input
-          className="date-picker__input"
           id="startDate"
-          type="date"
           value={startDate}
           onChange={setDate(setStartDate)}
+          {...inputProps}
         />
         -
         <input
-          className="date-picker__input"
-          type="date"
           value={endDate}
           onChange={setDate(setEndDate)}
+          {...inputProps}
         />
       </div>
       <button

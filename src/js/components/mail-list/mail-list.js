@@ -36,12 +36,12 @@ const getDate = (dateArr) => {
 
 const MailList = ({ mails = [] }) => {
   const [sortBy, setSortBy] = useState('date');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOrder, setSortOrder] = useState('desc');
 
   const sortMails = (type) => {
     if (type === sortBy) { setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc'); }
     else {
-      setSortOrder('asc');
+      setSortOrder('desc');
       setSortBy(type);
     }
   };
@@ -69,8 +69,6 @@ const MailList = ({ mails = [] }) => {
     return - b[sortBy].localeCompare(a[sortBy]);
   });
 
-  console.log('sorted emails', sortedMails);
-
   return (
     <div className={classNames(
       'mail-list',
@@ -85,7 +83,8 @@ const MailList = ({ mails = [] }) => {
                   className={classNames(
                     'mail-list__sort-option',
                     {
-                      [`mail-list__sort-option--${sortBy === type}`]: sortBy === type,
+                      'mail-list__sort-option--selected': sortBy === type,
+                      [`mail-list__sort-option--${sortOrder}`]: sortBy === type,
                     },
                   )}
                   key={`sort-${key}`}
@@ -93,11 +92,6 @@ const MailList = ({ mails = [] }) => {
                   onClick={() => sortMails(type)}
                 >
                   {type}
-                  {sortBy === type && (
-                    <span className="mail-list__sort-option-order">
-                      {sortOrder === 'asc' ? '▲' : '▼'}
-                    </span>
-                  )}
                 </button>
               ))}
             </div>
