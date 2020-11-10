@@ -6,7 +6,8 @@
   grid-template-areas:
     'from date'
     'to to'
-    'subject subject';
+    'subject subject'
+    'body body';
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -15,7 +16,7 @@
   @media (max-width: 767px) {
     background: url('../../../assets/icons/mail-from-to.svg')
       var(--space-medium)
-      17px
+      16px
       no-repeat;
     background-size: 13px;
   }
@@ -23,9 +24,22 @@
   @media (min-width: 768px) {
     background: none;
     grid-template-columns: 20% 25% 45% 10%;
-    grid-template-areas: unset;
-    height: 52px;
+    grid-template-areas:
+      'from to subject date'
+      'body body body body';
     line-height: 26px;
+
+    &:not(.mail-row--expanded) {
+      height: 52px;
+    }
+  }
+
+  &--expanded {
+    background-color: var(--color-light-gray-variant);
+
+    .mail-row__data--has-attachment::after {
+      background-color: var(--color-light-gray-variant);
+    }
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -34,22 +48,46 @@
       color: var(--color-blue);
       cursor: pointer;
 
-      .mail-row__data--subject-has-attachment::after {
+      .mail-row__data--has-attachment::after {
         background-color: var(--color-light-gray-variant);
       }
     }
   }
 
   &__data {
-    margin: var(--space-small) var(--space-small) var(--space-small) var(--space-medium);
-    overflow: hidden;
-    text-overflow: inherit;
+    margin: var(--space-small) var(--space-medium);
 
-    &--true {
+    @media (min-width: 768px) {
+      margin: var(--space-small);
+    }
+
+    &:not(.mail-row__data--body) {
+      overflow: hidden;
+      text-overflow: inherit;
+
+      @media (max-width: 767px) {
+        &:not(.mail-row__data--show) {
+          height: 18px;
+        }
+      }
+    }
+
+    &--body {
+      border-top: var(--color-light-gray) solid 1px;
+      grid-area: body;
+      height: auto;
+      margin-top: 0;
+      overflow: auto;
+      margin-top: 0;
+      padding-top: var(--space-small);
+      white-space: break-spaces;
+    }
+
+    &--sort-by {
       font-weight: bold;
     }
 
-    &--multiple-address-true {
+    &--multiple-address {
       align-items: center;
       display: flex;
       position: relative;
@@ -68,7 +106,7 @@
       }
     }
 
-    &--subject-has-attachment {
+    &--has-attachment {
       align-items: center;
       display: flex;
       padding-right: var(--space-medium);
@@ -82,16 +120,30 @@
         background: var(--color-white) url('../../../assets/icons/clip.svg') right center no-repeat;
         content: '';
         display: block;
-        height: var(--icon-extra-small);
+        height: 18px;
         position: absolute;
         right: 0;
-        width: var(--icon-extra-small);
+        width: 18px;
+
+        @media (min-width: 768px) {
+          top: 4px;
+        }
       }
     }
 
-    @media (max-width: 767px) {
-      height: 20px;
+    &--show {
+      align-items: flex-start;
+      height: auto;
+      white-space: break-spaces;
+    }
 
+    &-attachment {
+      color: blue;
+      display: block;
+      margin-top: var(--space-small);
+    }
+
+    @media (max-width: 767px) {
       &--from {
         grid-area: from;
         margin-bottom: 0;
@@ -112,12 +164,9 @@
       &--date {
         grid-area: date;
         margin-bottom: 0;
+        margin-left: 0;
         text-align: right;
       }
-    }
-
-    @media (min-width: 768px) {
-      margin: var(--space-small);
     }
   }
 }
