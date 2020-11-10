@@ -12,11 +12,15 @@ import './app.scss';
 
 const App = () => {
   const [showMails, setShowMails] = useState(false);
+  const selectedDates = (e) => {
+    console.log(e);
+    setShowMails(true);
+  }
 
   return (
     <div className="app">
       <form className="app__form">
-        <DatePicker onChange={() => setShowMails(true)} />
+        <DatePicker onChange={(e) => selectedDates(e)} />
       </form>
       <Counter count={showMails ? mailData.length : 0} />
       {showMails && mailData && (
