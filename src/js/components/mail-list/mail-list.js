@@ -83,7 +83,8 @@ const MailList = ({ mails = [] }) => {
                   className={classNames(
                     'mail-list__sort-option',
                     {
-                      [`mail-list__sort-option--${sortBy === type}`]: sortBy === type,
+                      'mail-list__sort-option--selected': sortBy === type,
+                      [`mail-list__sort-option--${sortOrder}`]: sortBy === type,
                     },
                   )}
                   key={`sort-${key}`}
@@ -91,11 +92,6 @@ const MailList = ({ mails = [] }) => {
                   onClick={() => sortMails(type)}
                 >
                   {type}
-                  {sortBy === type && (
-                    <span className="mail-list__sort-option-order">
-                      {sortOrder === 'asc' ? '▲' : '▼'}
-                    </span>
-                  )}
                 </button>
               ))}
             </div>

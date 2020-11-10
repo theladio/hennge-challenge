@@ -162,10 +162,20 @@
       }
 
       &--date {
+        align-items: center;
+        display: flex;
         grid-area: date;
+        justify-content: flex-end;
         margin-bottom: 0;
         margin-left: 0;
         text-align: right;
+
+        &::after {
+          background: var(--color-white) url('../../../assets/icons/arrow-right.svg') right center no-repeat;
+          content: '';
+          height: 8px;
+          width: 8px;
+        }
       }
     }
   }
