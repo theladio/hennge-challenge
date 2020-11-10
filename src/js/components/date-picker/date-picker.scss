@@ -7,10 +7,7 @@
   height: 44px;
   justify-content: space-between;
   overflow: hidden;
-
-  @media (min-width: 375px) {
-    padding-left: var(--space-small);
-  }
+  padding-left: var(--space-small);
 
   @media (min-width: 768px) {
     height: 52px;
@@ -29,7 +26,7 @@
         content: '';
         display: block;
         height: 100%;
-        margin-right: var(--space-extra-small);
+        margin-right: var(--space-small);
         width: var(--icon-extra-small);
       }
     }
