@@ -53,13 +53,23 @@
         padding: var(--space-small);
       }
 
-      &--true {
+      &--selected {
+        align-items: center;
         color: var(--color-black);
+        display: inline-flex;
+
+        &::after {
+          background: url('../../../assets/icons/arrow-up.svg') right center no-repeat;
+          background-size: 10px;
+          content: '';
+          height: 10px;
+          margin-left: var(--space-extra-small);
+          width: 10px;
+        }
       }
 
-      &-order {
-        font-size: 12px;
-        margin-left: var(--space-extra-small);
+      &--desc::after {
+        transform: rotate(180deg);
       }
     }
   }
