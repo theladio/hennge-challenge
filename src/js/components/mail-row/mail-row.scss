@@ -16,7 +16,7 @@
   @media (max-width: 767px) {
     background: url('../../../assets/icons/mail-from-to.svg')
       var(--space-medium)
-      16px
+      15px
       no-repeat;
     background-size: 13px;
   }
@@ -62,12 +62,15 @@
     }
 
     &:not(.mail-row__data--body) {
-      overflow: hidden;
       text-overflow: inherit;
+
+      &:not(.mail-row__data--date) {
+        overflow: hidden;
+      }
 
       @media (max-width: 767px) {
         &:not(.mail-row__data--show) {
-          height: 18px;
+          height: 16px;
         }
       }
     }
@@ -120,13 +123,15 @@
         background: var(--color-white) url('../../../assets/icons/clip.svg') right center no-repeat;
         content: '';
         display: block;
-        height: 18px;
+        height: 16px;
         position: absolute;
         right: 0;
-        width: 18px;
+        width: 16px;
 
         @media (min-width: 768px) {
+          height: 18px;
           top: 4px;
+          width: 18px;
         }
       }
     }

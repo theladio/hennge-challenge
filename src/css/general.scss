@@ -1,5 +1,9 @@
 body,
 input,
 button {
-  font: var(--font-default-size) var(--font-default);
+  font: var(--font-default-size-mobile) var(--font-default);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-default-size);
+  }
 }
